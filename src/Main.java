@@ -29,7 +29,36 @@ public class Main {
 
         while(opcion != 9){
             System.out.println(menu);
-            opcion = teclado.nextInt();
+            opcion = teclado.nextInt(); // no proporcione un ciclo infinito, recibido por teclado
+
+            //switch varias opciones del menu con sus metodos(Actualizar, Retirar, Consultar)
+            switch(opcion){
+                case 1:    //Consultar
+                    System.out.println("El Saldo Actualizado es de: " + saldo + "$");
+                    break;
+                case 2:   //Retirar
+                    System.out.println("Cual es el valor deseado a Retirar");
+                    double valorARetirar = teclado.nextDouble();  //entrada de datos por teclado por el usuario
+                    if (valorARetirar > saldo) {
+                        System.out.println("Saldo insuficiente");
+                    } else {
+                        saldo = saldo - valorARetirar;
+                        System.out.println("El saldo actualizado es: " + saldo);
+                    }
+                    break;
+                case 3:    //Depositar
+                    System.out.println("Cual es el valor deseado a Depositar");
+                    double valorADepositar = teclado.nextDouble();
+                    saldo += valorADepositar;
+                    //saldo = saldo + valorADepositar;
+                    System.out.println("El saldo actualizado es: " + saldo);
+                    break;
+                case 9:   //Salir
+                    System.out.println("salir del programa, gracias");
+                    break;
+                default:
+                    System.out.println("Opcion invalida, intenta de nuevo por favor!");
+            }
         }
 
 
